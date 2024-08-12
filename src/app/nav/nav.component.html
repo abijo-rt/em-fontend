@@ -1,0 +1,16 @@
+<div class="nav flex flex-row w-screen h-1/6 fixed p-5 gap-x-5 z-50">
+  <div class="backdrop-blur-sm h-12 w-12 shadow-md rounded-b-md   bg-no-repeat bg-cover transition-transform duration-500 ease-in-out" (click)="toggleVisibility()" style="background-image: url(/assets/list.svg);"></div>
+  <div [ngClass]="{'nav-visible': isVisible, 'nav-hidden': !isVisible}" class=" h-12 w-1/2 shadow-md rounded-md flex flex-row justify-evenly items-center backdrop-blur-sm">
+    <a class="font-nav text-xl hover:text-slate-800 font-medium" routerLink="/home">Home</a>
+    <p>|</p>
+    <a class="font-nav text-xl hover:text-slate-800 font-medium" routerLink="/events">Events</a>
+    <p>|</p>
+    <a class="font-nav text-xl hover:text-slate-800 font-medium" routerLink="/pricing">Pricing</a>
+    <p>|</p>
+    <a class="font-nav text-xl hover:text-slate-800 font-medium" routerLink="/about">About us</a>
+  </div>
+  <div [ngClass]="{'nav-visible': isVisible, 'nav-hidden': !isVisible}" class="h-12  w-1/3  shadow-md rounded-md hidden md:block"></div>
+  <div [ngClass]="{'nav-visible': isVisible, 'nav-hidden': !isVisible}" class="h-12 w-1/5  hidden md:block">
+    <app-social-icon></app-social-icon>
+  </div>
+</div>
