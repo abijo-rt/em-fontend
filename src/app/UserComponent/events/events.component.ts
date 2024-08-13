@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CardsComponent } from '../ui/cards/cards.component';
+import { CardsComponent } from '../../ui/cards/cards.component';
 @Component({
   selector: 'app-events',
   standalone: true,

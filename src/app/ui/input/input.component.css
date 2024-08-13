@@ -5,7 +5,7 @@
 
 
 .custom-label {
-    @apply border border-gray-200 h-8 rounded-full bg-[#f8f8f8] focus-within:border-4 px-2 text-[#5b6e6f] text-xs;
+    @apply border border-gray-200 h-8 rounded-full bg-[#e9effd] focus-within:border-4 px-2 text-[#5b6e6f] text-xs;
   }
   
   label{

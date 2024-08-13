@@ -4,7 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { StepperModule } from 'primeng/stepper';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { CommonModule } from '@angular/common';
-import { DataService, Vendor } from '../service/data.service';
+import { DataService, Vendor } from '../../service/data.service';
 @Component({
   selector: 'app-stepper-form',
   standalone: true,
@@ -13,14 +13,14 @@ import { DataService, Vendor } from '../service/data.service';
   styleUrl: './stepper-form.component.css'
 })
 export class StepperFormComponent {
-@Output() stepperEmitter=new  EventEmitter<string[]>;
+  @Output() stepperEmitter = new EventEmitter<string[]>;
   @ViewChildren(VendorCardComponent) vendor!: QueryList<VendorCardComponent>;
 
-Vendorname:string[]=[];
-veunecards: Vendor[] | undefined;
-catercards: Vendor[] | undefined;
-decorcards: Vendor[] | undefined;
-Entercards: Vendor[] | undefined;
+  Vendorname: string[] = [];
+  veunecards: Vendor[] | undefined;
+  catercards: Vendor[] | undefined;
+  decorcards: Vendor[] | undefined;
+  Entercards: Vendor[] | undefined;
 
   ngAfterViewInit() {
     this.vendor.forEach((child: any) => {
@@ -42,15 +42,15 @@ Entercards: Vendor[] | undefined;
 
   }
 
-  
+
 
   constructor(private dataservice: DataService) { }
 
   ngOnInit(): void {
-    this.veunecards=this.dataservice.getFoodV()
-this.catercards=this.dataservice.getcatersV()
-this.decorcards=this.dataservice.getdecorsV()
-this.Entercards=this.dataservice.getvenueV()
+    this.veunecards = this.dataservice.getFoodV()
+    this.catercards = this.dataservice.getcatersV()
+    this.decorcards = this.dataservice.getdecorsV()
+    this.Entercards = this.dataservice.getvenueV()
   }
 
 }

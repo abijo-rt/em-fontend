@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.content{
+  @apply h-96 flex-grow items-center flex flex-col p-5 space-y-6
+}
 
 
 :host {
@@ -24,7 +26,8 @@
 
 
 .content{
-height: 50rem;
+
+width: fit-content;
 overflow:scroll;
 }
 
