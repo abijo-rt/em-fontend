@@ -21,6 +21,7 @@ isFocused: string | undefined; // Track the focused button
 
 added() {
   this.add=!this.add
+  this.sendvendor()
   if (this.isFocused === this.name) {
     this.isFocused = undefined; // Unfocus if clicked again
   } else {
@@ -31,7 +32,7 @@ added() {
   sendvendor() {
    
     if(this.add){
-      alert(this.name);
+      // alert(this.name);
       this.dataEmitter.emit(this.name);}
   }
 

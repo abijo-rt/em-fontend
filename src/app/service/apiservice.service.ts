@@ -9,15 +9,18 @@ import { Observable } from 'rxjs';
 })
 export class ApiserviceService {
 
-  private url = 'http://localhost:3000/newUser';
+  private url = 'http://localhost:3000/';
 
   constructor(private https : HttpClient) { }
   
 
   newForm(data : any):Observable<HttpResponse<any>>{
-    return this.https.post<any>(this.url,data,{observe:'response'});
+    return this.https.post<any>(`${this.url}vendor/newvendor`,data,{observe:'response'});
   }
 
+  newuser(data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}newUser`,data,{observe:'response'});
+  }
 
 
   httpOptions = {

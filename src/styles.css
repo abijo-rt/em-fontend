@@ -10,3 +10,6 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    font-family: 'SUSE', sans-serif;
+}

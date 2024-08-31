@@ -1,0 +1,23 @@
+<div class="main h-screen w-screen flex items-center justify-center space-x-10">
+    <div class="w-1/4 h-3/4 bg-white rounded-lg"></div>
+    <div class="w-1/4 h-3/4 bg-white rounded-lg flex flex-col items-center justify-evenly">
+        <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        
+        <p class="text-xl font-semibold text-[#A0AEC0]">Create a Vendor Account</p>
+       
+
+        <div class=" h-fit w-full space-y-4 flex flex-col items-center justify-center">
+            <span class="flex w-full justify-between"><label for="name " >Name</label><input [(ngModel)]="from.name" class="custom-label" name="name" type="text" required></span>
+            <span class="flex w-full justify-between"><label for="name " >Email</label><input [(ngModel)]="from.email" class="custom-label" name="email" type="text" required></span>
+            <span class="flex w-full justify-between"><label for="name " >Contact</label><input [(ngModel)]="from.contact" class="custom-label" name="phone"></span>
+            <span class="flex w-full justify-between"><label for="name " >Password</label><input [(ngModel)]="from.password" class="custom-label" name="password" type="password"></span>
+            <button class="rounded-full bg-[#e9effd] h-8 w-56 border-2 font-semibold " type="submit" >Create Account</button>
+            <p class="font-semibold text-sm g">Already have an acoount? Login in</p>
+        </div>
+        <div class="w-fit mt-4 h-fit text-[#A0AEC0] space-y-4">
+       
+        </div>
+    </form>
+    </div>
+</div>
+    

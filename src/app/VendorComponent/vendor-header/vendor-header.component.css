@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply flex items-center justify-center border-2 border-[#a7abb7] rounded-lg  text-[#a7abb7] 
+  ;
+  font-size: 12px;
+}
+
+.btn{
+  font-family: 'SUSE', sans-serif;
+}
+
+.header{
+  font-family: 'SUSE', sans-serif;
+}

@@ -4,7 +4,6 @@ import { ButtonModule } from 'primeng/button';
 import { StepperModule } from 'primeng/stepper';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { RadiobuttonComponent } from '../../ui/radiobutton/radiobutton.component';
-import { ListsComponent } from '../../ui/lists/lists.component';
 import { StepperFormComponent } from '../stepper-form/stepper-form.component';
 import { InfocardComponent } from '../../ui/infocard/infocard.component';
 import { FieldsetModule } from 'primeng/fieldset';
@@ -17,57 +16,61 @@ interface input {
   value: any
 }
 
+interface Formdata{
+
+Userdetails:input[],
+VendorDetails:string[]
+}
+
 @Component({
   selector: 'app-pricing',
   standalone: true,
-  imports: [FieldsetModule, InputComponent, StepperFormComponent, StepperModule, ButtonModule, CheckboxModule, RadioButtonModule, RadiobuttonComponent, ListsComponent, InfocardComponent],
+  imports: [FieldsetModule, InputComponent, StepperFormComponent, StepperModule, ButtonModule, CheckboxModule, RadioButtonModule, RadiobuttonComponent,  InfocardComponent],
   templateUrl: './pricing.component.html',
-  styleUrl: './pricing.component.css'
+  styleUrls: ['./pricing.component.css'] // Corrected styleUrl to styleUrls
 })
 export class PricingComponent {
 
-  constructor(private api: ApiserviceService) {
-  }
+  constructor(private api: ApiserviceService) { }
 
-  VendorName: string[] | undefined
+  formdata: input[] = []; // Initialize as an empty array
+
+  VendorName: string[] | undefined;
   @ViewChildren(InputComponent) childInputs!: QueryList<InputComponent>;
   @ViewChild(StepperFormComponent) Stepper!: StepperFormComponent;
 
   ngAfterViewInit() {
     this.Stepper.stepperEmitter.subscribe((arr: string[]) => {
-      this.VendorName = arr
+      this.VendorName = arr;
     });
   }
 
   executeChildMethod() {
-    this.childInputs.forEach((child: any) => {
+    this.childInputs.forEach((child: InputComponent) => {
       child.dataEmitter.subscribe((data: input) => this.handleData(data));
       child.sendDataToParent();  // Trigger emitData on each child component
     });
 
     this.Stepper.stepper();
 
-    this.sendData(this.formdata)
+    this.sendData();
   }
-
 
   handleData(data: { name: string, value: string }) {
     console.log(`${data.name}: ${data.value}`);
     this.formdata?.push(data);
-
   }
 
-  formdata: input[] | undefined;
-
-
-
-  sendData(data: input[] | undefined) {
-    this.api.newForm(data).subscribe(
+  sendData() {
+    const finaldata={
+      Userdetails: this.formdata,
+      VendorDetails:this.VendorName
+    }
+    this.api.newForm(finaldata).subscribe(
       (res: HttpResponse<any>) => {
-        console.log(res.body)
-        console.log(res.status)
+        console.log(res.body);
+        console.log(res.status);
       }
-    )
+    );
   }
-
 }

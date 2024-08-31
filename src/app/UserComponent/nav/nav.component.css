@@ -1,3 +1,7 @@
+.backblur{
+  @apply backdrop-blur-sm 
+}
+
 .nav {
   position: fixed;
   top: 0;

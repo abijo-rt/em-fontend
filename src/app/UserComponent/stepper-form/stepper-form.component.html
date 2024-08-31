@@ -9,7 +9,7 @@
           <div 
             class="content ">
             <div *ngFor="let card of veunecards">
-              <app-vendor-card name="{{card.name}}" address="{{card.address}}" type="{{card.type}}"></app-vendor-card>
+              <app-vendor-card name="{{card.name}}" address="{{card.address}}" type="{{card.type}}" (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
             </div>
 
           </div>
@@ -31,7 +31,7 @@
           <div
             class="content ">
             <div *ngFor="let card of catercards">
-              <app-vendor-card name="{{card.name}}" address="{{card.address}}" type="{{card.type}}"></app-vendor-card>
+              <app-vendor-card name="{{card.name}}" address="{{card.address}}" type="{{card.type}}" (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
           <div
             class="content">
             <div *ngFor="let card of decorcards">
-              <app-vendor-card name="{{card.name}}" address="{{card.address}}" type="{{card.type}}"></app-vendor-card>
+              <app-vendor-card name="{{card.name}}" address="{{card.address}}" type="{{card.type}} "  (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@
           <div
             class="content ">
             <div *ngFor="let card of Entercards">
-              <app-vendor-card name="{{card.name}}" address="{{card.address}}" type="{{card.type}}"></app-vendor-card>
+              <app-vendor-card name="{{card.name}}" address="{{card.address}}" type="{{card.type}}" (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
             </div>
           </div>
         </div>
@@ -80,10 +80,7 @@
           <button type="button" class="button1" icon="pi pi-arrow-right" (click)="prevCallback.emit()">
             <i class="ph ph-arrow-left"></i>Back
           </button>
-          <button type="button" class="button1" icon="pi pi-arrow-right"
-            style="background-color: #9bec00; width: 120px">
-            Submit <i class="ph ph-notebook"></i>
-          </button>
+        
         </div>
       </ng-template>
     </p-stepperPanel>
