@@ -1,18 +1,28 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './UserComponent/home/home.component';
 import { PricingComponent } from './UserComponent/pricing/pricing.component';
-import { AboutComponent } from './UserComponent/about/about.component';
-import { EventsComponent } from './events/events.component';
 import { MainComponent } from './UserComponent/main/main.component';
-import { LoginComponent } from './VendorComponent/login/login.component';
-import { NewuserComponent } from './VendorComponent/newuser/newuser.component';
+import { UserEventComponent } from './UserComponent/user-event/user-event.component';
+import { UserAddEventComponent } from './UserComponent/user-add-event/user-add-event.component';
+import { VendorHomeComponent } from './VendorComponent/vendor-home/vendor-home.component';
+// import { NewuserComponent } from './VendorComponent/newuser/newuser.component';
+// import { NewUserComponent } from './UserComponent/new-user/new-user.component';
 
 export const routes: Routes = [
 
 
-  { path: '', component: MainComponent },
-  { path: 'pricing', component: PricingComponent },
-  {path:'login',component:LoginComponent},
-  {path:'newuser',component:NewuserComponent}
+  // { 
+  //   path: '', component: MainComponent, 
+  // },
+
+  { 
+    path: 'user', component: VendorHomeComponent, 
+    children :[
+      { path: 'events', component: UserEventComponent },
+      { path: 'addevents', component: UserAddEventComponent },
+    ]
+  },
+
+  // { path: 'pricing', component: PricingComponent },
+  // { path: '/user/support', component: PricingComponent },
 
 ];

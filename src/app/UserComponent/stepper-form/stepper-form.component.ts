@@ -13,7 +13,7 @@ import { DataService, Vendor } from '../../service/data.service';
   styleUrls: ['./stepper-form.component.css'] // Corrected styleUrl to styleUrls
 })
 export class StepperFormComponent {
-  @Output() stepperEmitter = new EventEmitter<string[]>();
+  @Output() stepperEmitter = new EventEmitter<string>();
 
   Vendorname: string[] = [];
   veunecards: Vendor[] | undefined;
@@ -23,17 +23,20 @@ export class StepperFormComponent {
 
   // Method to handle the emitted vendor name
   handleVendorAdded(name: string) {
-    if (!this.Vendorname.includes(name)) {  // Ensure no duplicates
+    if (!this.Vendorname.includes(name)) {
       this.Vendorname.push(name);
       console.log("Vendor added:", name);
+  
+      // Emit the single vendor name
+      this.stepperEmitter.emit(name);
     }
   }
 
-  stepper() {
-    console.log("HI HELLO THIS IS STEPPER");
-    console.log(this.Vendorname);
-    this.stepperEmitter.emit(this.Vendorname);
-  }
+  // stepper() {
+  //   console.log("HI HELLO THIS IS STEPPER");
+  //   console.log(this.Vendorname);
+  //   this.stepperEmitter.emit(this.Vendorname);
+  // }
 
   constructor(private dataservice: DataService) { }
 

@@ -1,0 +1,24 @@
+<div class="card h-64 flex ">
+    <div class="w-1/2 flex items-center justify-center mb-5">
+      <div><img src="../../../assets/ven_login.svg" alt="" class="size-72"></div>
+    </div>
+    
+    
+    <div class="w-1/2 space-y-8 ">
+      <span class="p-text-secondary block mb-10 font-semibold">Enter your Login Credentials</span>
+     
+      <div class="flex justify-between gap-3 mb-10">
+        <label for="phone_no" class="font-semibold">Phone No</label>
+        <input id="phone_no" class="flex-auto inputbox" autocomplete="off" [(ngModel)]="phone_no" />
+      </div>
+      <div class="flex justify-between gap-3 mb-10">
+        <label for="phone_no" class="font-semibold">Password</label>
+        <input id="phone_no" class="flex-auto inputbox" autocomplete="off" [(ngModel)]="password" />
+      </div>
+      <div class="flex justify-between gap-2 mt-10">
+        <button class="btn" (click)="cancel()">Cancel</button>
+        <button class="btn" (click)="submit()">Log in</button>
+      </div>
+    </div>
+  
+    </div>

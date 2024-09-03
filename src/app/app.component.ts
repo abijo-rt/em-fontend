@@ -6,10 +6,11 @@ import { PricingComponent } from './UserComponent/pricing/pricing.component';
 import { EventsComponent } from './events/events.component';
 import { AboutComponent } from './UserComponent/about/about.component';
 import { VendorHomeComponent } from "./VendorComponent/vendor-home/vendor-home.component";
+import { NewUserComponent } from "./UserComponent/new-user/new-user.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HomeComponent, NavComponent, PricingComponent, AboutComponent, EventsComponent, VendorHomeComponent],
+  imports: [RouterOutlet, HomeComponent, NavComponent, PricingComponent, AboutComponent, EventsComponent, VendorHomeComponent, NewUserComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

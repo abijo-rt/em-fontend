@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.list {
+    @apply h-14 w-14 rounded-xl border-2 flex flex-col items-center justify-center
+    
+}
+.podspan{
+    @apply w-full  text-center
+}
+.podspan {
+    font-size: 10px; 
+}
+.pod{
+    @apply w-8 h-8 rounded-full 
+}

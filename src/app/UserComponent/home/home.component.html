@@ -3,8 +3,9 @@
      <div class="flex flex-row h-screen justify-center w-screen items-center p-32">
        <div class="flex flex-col w-1/2 space-y-10 ">
         <p class=" para sm:h-fit font-bold sm:w-full  text-4xl sm:text-8xl h-fit w-full text-wrap ">Great events start with great planning</p>
-<app-loading  routerLink="/pricing"
-routerLinkActive="activebutton"></app-loading>
+
+         <button (click)="showDialogNewUser() " class="h-10 w-64 bg-white text-xl font-semibold rounded-full shadow-lg"  label="Show" >Get started</button>
+         <!-- <button (click)="showDialogNewUser() " class="h-10 w-64 bg-white text-xl font-semibold rounded-full shadow-lg"  label="Show" >Get started</button> -->
       </div>
       <div class="h-3/4 w-1/2 flex flex-col items-center justify-start bg-cover" style="background-image: url('../assets/ep.png');">
       
@@ -23,5 +24,16 @@ routerLinkActive="activebutton"></app-loading>
     </div>
   </div>
   <div class=" right-0 bottom-0 fixed z-50">
-    <!-- <app-call ></app-call> -->
   </div>
+
+
+
+ 
+  
+    <p-dialog header="Create an account" [modal]="true" [(visible)]="visibleNewUser" [style]="{ width: '40rem' }">
+       <app-new-user></app-new-user>
+    </p-dialog>
+
+    <p-dialog header="Login" [modal]="true" [(visible)]="visibleLoginUser" [style]="{ width: '40rem' }">
+       <app-new-user></app-new-user>
+    </p-dialog>
