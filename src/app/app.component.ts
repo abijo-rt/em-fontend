@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from "./UserComponent/home/home.component";
-import { NavComponent } from "./UserComponent/nav/nav.component";
-import { PricingComponent } from './UserComponent/pricing/pricing.component';
-import { EventsComponent } from './events/events.component';
-import { AboutComponent } from './UserComponent/about/about.component';
+import { EventsComponent } from './LandingPage/events/events.component';
 import { VendorHomeComponent } from "./VendorComponent/vendor-home/vendor-home.component";
 import { NewUserComponent } from "./UserComponent/new-user/new-user.component";
+import { HomeComponent } from './LandingPage/home/home.component';
+import { NavComponent } from './ui/nav/nav.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HomeComponent, NavComponent, PricingComponent, AboutComponent, EventsComponent, VendorHomeComponent, NewUserComponent],
+  imports: [RouterOutlet, HomeComponent, NavComponent,  EventsComponent, VendorHomeComponent, NewUserComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

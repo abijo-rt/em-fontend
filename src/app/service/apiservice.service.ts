@@ -14,13 +14,35 @@ export class ApiserviceService {
   constructor(private https : HttpClient) { }
   
 
-  newForm(data : any):Observable<HttpResponse<any>>{
+  newVendor(data : any):Observable<HttpResponse<any>>{
     return this.https.post<any>(`${this.url}vendor/newvendor`,data,{observe:'response'});
   }
 
-  newuser(data : any):Observable<HttpResponse<any>>{
-    return this.https.post<any>(`${this.url}newUser`,data,{observe:'response'});
+  loginVendor(data : any) : Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}vendor/loginvendor`,data,{observe:'response'});
   }
+
+  newUser(data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}user/newUser`, data , {observe:'response'});
+  }
+
+  loginUser(data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}user/loginUser`, data ,{observe:'response'});
+  }
+
+  getVendorList(data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}vendor/getVendorList`, data ,{observe:'response'});
+  }
+
+  getUserDetails(data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}user/getUserDetails`, data ,{observe:'response'});
+  }
+  
+  newEvent(data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}user/newEvent`, data ,{observe:'response'});
+  }
+
+  
 
 
   httpOptions = {

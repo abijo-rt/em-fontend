@@ -1,71 +1,66 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 export interface Vendor{
-  type:string,
-  name:string,
-  address:string
+  
+  vendor_cname:string,
+  vendor_contact:string
+  vendor_location:string
+  vendor_service:string
 }
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService {
 
-  private venueV: Vendor[] = [
-    { name: "venueVendor1", type: "venue", address: "dummy address1" },
-    { name: "venueVendor2", type: "venue", address: "dummy address2" },
-    { name: "venueVendor3", type: "venue", address: "dummy address3" },
-    { name: "venueVendor4", type: "venue", address: "dummy address4" },
-    { name: "venueVendor5", type: "venue", address: "dummy address5" },
-    { name: "venueVendor6", type: "venue", address: "dummy address6" },
-    { name: "venueVendor7", type: "venue", address: "dummy address7" },
-    { name: "venueVendor8", type: "venue", address: "dummy address8" },
-  ];
+  private functionSubject = new Subject<void>();
+  functionCalled$ = this.functionSubject.asObservable();
 
-  private foodV: Vendor[] = [
-    { name: "foodVendor1", type: "food", address: "dummy address1" },
-    { name: "foodVendor2", type: "food", address: "dummy address2" },
-    { name: "foodVendor3", type: "food", address: "dummy address3" },
-    { name: "foodVendor4", type: "food", address: "dummy address4" },
-    { name: "foodVendor5", type: "food", address: "dummy address5" },
-    { name: "foodVendor6", type: "food", address: "dummy address6" },
-    { name: "foodVendor7", type: "food", address: "dummy address7" },
-    { name: "foodVendor8", type: "food", address: "dummy address8" },
-  ];
+  callFunction() {
+    this.functionSubject.next();
+  }
 
-  private caters: Vendor[] = [
-    { name: "caterVendor1", type: "cater", address: "dummy address1" },
-    { name: "caterVendor2", type: "cater", address: "dummy address2" },
-    { name: "caterVendor3", type: "cater", address: "dummy address3" },
-    { name: "caterVendor4", type: "cater", address: "dummy address4" },
-    { name: "caterVendor5", type: "cater", address: "dummy address5" },
-    { name: "caterVendor6", type: "cater", address: "dummy address6" },
-    { name: "caterVendor7", type: "cater", address: "dummy address7" },
-    { name: "caterVendor8", type: "cater", address: "dummy address8" },
-  ];
+  private venDetails: any  | undefined ;
+  private userProfile : any | undefined ;
 
-  private decors: Vendor[] = [
-    { name: "decorVendor1", type: "decor", address: "dummy address1" },
-    { name: "decorVendor2", type: "decor", address: "dummy address2" },
-    { name: "decorVendor3", type: "decor", address: "dummy address3" },
-    { name: "decorVendor4", type: "decor", address: "dummy address4" },
-    { name: "decorVendor5", type: "decor", address: "dummy address5" },
-    { name: "decorVendor6", type: "decor", address: "dummy address6" },
-    { name: "decorVendor7", type: "decor", address: "dummy address7" },
-    { name: "decorVendor8", type: "decor", address: "dummy address8" },
-  ];
+  setUserData(data :any ){
+    this.userProfile = data;
+  }
+  getUserData(){
+    return this.userProfile;
+  }
+
+  setVenDetails(data : any){
+    this.venDetails  = data;
+  }
+
+  getVenDetails(){
+    return this.venDetails
+  }
 
   getFoodV(){
-    return this.foodV
+    return this.venDetails.food
   }
   getvenueV(){
-    return this.venueV
+    return this.venDetails.venue
   }
   getcatersV(){
-    return this.caters
+    return this.venDetails.entertain
   }
   getdecorsV(){
-    return this.decors
+    return this.venDetails.decor
+  }
+
+  decodeToken(token: any) {
+    try {
+      const payload = token.split('.')[1];
+      return JSON.parse(atob(payload));
+    } catch (error) {
+      console.error('Failed to decode token:', error);
+      return null;
+    }
   }
 
   constructor() { }

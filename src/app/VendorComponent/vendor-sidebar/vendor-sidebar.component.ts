@@ -15,6 +15,6 @@ export class VendorSidebarComponent {
   menus:ISidebar[] | undefined;
 
   ngOnInit(){
-    this.menus=this.appdata.getUserSiderbarData();
+    this.menus=this.appdata.getVendorSiderbarData();
   }
 }

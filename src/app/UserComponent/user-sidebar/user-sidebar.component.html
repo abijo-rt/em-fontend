@@ -1,0 +1,8 @@
+<div class="h-full w-60 p-4 ">
+    <div class=" h-full bg-[#ffffff] flex flex-col items-center justify-start pt-10 space-y-8 rounded-md">
+      
+        <div *ngFor="let menu of menus" class="w-full  flex justify-center">
+            <div class="btn"><button [routerLink]="menu.routerLink"> {{menu.label}} </button></div>    
+        </div>
+    </div>
+    </div>

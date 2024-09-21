@@ -18,11 +18,19 @@ export class AppdataService {
     { label: 'My Events', routerLink: "/user/events", icon: 'pi pi-chart-bar'  },
     { label: 'Add Events', routerLink: '/user/addevents', icon:'pi pi-calendar-plus'  },
     { label: 'Contacts', routerLink: '/' ,icon:'pi pi-user-plus'},
-   
   ]
+  private vendorSideBar : ISidebar[]= [
+    { label: 'My Events', routerLink: "/vendor/newevents", icon: 'pi pi-chart-bar'  },
+    { label: 'Add Events', routerLink: '/vendor/events', icon:'pi pi-calendar-plus'  },
+    { label: 'Contacts', routerLink: '/' ,icon:'pi pi-user-plus'},
+  ]
+
   constructor() { }
 
   getUserSiderbarData(){
     return this.userSideBar;
+  }
+  getVendorSiderbarData(){
+    return this.vendorSideBar;
   }
 }

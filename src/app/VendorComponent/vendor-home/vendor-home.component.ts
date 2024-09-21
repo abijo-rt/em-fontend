@@ -3,6 +3,11 @@ import { VendorHeaderComponent } from "../vendor-header/vendor-header.component"
 import { VendorSidebarComponent } from "../vendor-sidebar/vendor-sidebar.component";
 import { VendorContentComponent } from "../vendor-content/vendor-content.component";
 
+interface IVendorDetails { 
+  name : string
+  past_events : string
+}
+
 @Component({
   selector: 'app-vendor-home',
   standalone: true,
@@ -12,4 +17,9 @@ import { VendorContentComponent } from "../vendor-content/vendor-content.compone
 })
 export class VendorHomeComponent {
 
+
+
+  ngOnIt(){
+
+  }
 }

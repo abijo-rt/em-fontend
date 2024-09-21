@@ -1,4 +1,14 @@
-<div class="w-full h-full p-5">
-    <app-event-card></app-event-card>  
+<div class="w-full h-full flex flex-col ">
+    <div class="w-full h-16 rounded-t-md border-b-2 flex items-center justify-evenly">
+        <div>icon : {{userData.name}}</div>
+        <div>Phone no : {{userData.phone}}</div>
+        <div>Email: {{userData.email}}</div>
+    </div>
 
+    <!-- The grid container with flex-grow to fill remaining space -->
+    <div class="grid grid-cols-4 w-full  overflow-auto flex-grow pl-8 pr-8">
+        <div *ngFor="let num of arr" class="pl-8 pt-10">
+            <app-event-list></app-event-list>
+        </div>
+    </div>
 </div>

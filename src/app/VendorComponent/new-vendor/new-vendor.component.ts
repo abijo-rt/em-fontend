@@ -1,5 +1,15 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ApiserviceService } from '../../service/apiservice.service';
+
+interface INewVendor {
+  name: String,
+  email: String,
+  phone_no: String,
+  location: String,
+  pincode: String,
+  c_name: String,
+}
 @Component({
   selector: 'app-new-vendor',
   standalone: true,
@@ -8,11 +18,30 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './new-vendor.component.css'
 })
 export class NewVendorComponent {
-name: any;
-email: any;
-phone_no: any;
-submit() {
-throw new Error('Method not implemented.');
-}
+password: any;
+
+  constructor(private api:ApiserviceService){}
+
+  name: String | undefined;
+  email: String | undefined;
+  phone_no: String | undefined;
+  location: String | undefined;
+  pincode: String | undefined;
+  c_name: String | undefined;
+
+  submit() {
+
+    const newVenodor = {
+      name: this.name,
+      email: this.email,
+      phone_no: this.phone_no,
+      location: this.location,
+      pincode: this.pincode,
+      c_name: this.c_name,
+      password: this.password,
+    }
+    this.api.newVendor(newVenodor).subscribe((res) => console.log(res) )
+    console.log(newVenodor)
+  }
 
 }
