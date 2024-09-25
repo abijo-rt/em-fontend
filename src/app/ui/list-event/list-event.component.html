@@ -1,27 +1,13 @@
-<div class="w-fit h-16 flex items-center justify-evenly  space-x-4" >
-    <span class="w-32 text-center text-wrap text-sm">{{vendorName}}</span>
-    <div class="list ">
-        <div class="pod" ><img src="../../../assets/pending.svg" alt="" srcset=""></div>
-    </div>
-    <div class="list ">
-        <div class="pod" ><img src="../../../assets/pending.svg" alt="" srcset=""></div>
-    </div>
-    <div class="list ">
-        <div class="pod" ><img src="../../../assets/pending.svg" alt="" srcset=""></div>
-    </div>
-    <div class="list ">
-        <div class="pod" ><img src="../../../assets/complete.svg" alt="" srcset=""></div>
-    </div>
-    <div class="list ">
-        <div class="pod" ><img src="../../../assets/complete.svg" alt="" srcset=""></div>
-    </div>
-    <div class="list ">
-        <div class="pod" ><img src="../../../assets/complete.svg" alt="" srcset=""></div>
-    </div>
-    <div class="list ">
-        <div class="pod" ><img src="../../../assets/complete.svg" alt="" srcset=""></div>
-    </div>
+<div class="w-fit h-16 flex items-center justify-evenly  space-x-4 " >
+    <button class="venbtn" (click)="vendetails()">{{vendorName}}</button>
+   
     
+    <div *ngFor="let status of vendorDetails.vendorEventDetails[0].status" class="list">
+        <img
+        [src]=" status ? '../../../assets/complete.svg' : '../../../assets/pending.svg'"
+        alt=""
+      />
+    </div>
   
 
 </div>

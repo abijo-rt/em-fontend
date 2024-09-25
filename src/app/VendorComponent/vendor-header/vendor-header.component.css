@@ -3,15 +3,10 @@
 @tailwind utilities;
 
 .btn {
-  @apply flex items-center justify-center border-2 border-[#a7abb7] rounded-lg  text-[#a7abb7] 
-  ;
+  @apply flex items-center justify-center border border-[#86d293] rounded-md  text-[#86d293] 
+  hover:bg-[#86d293] hover:text-white ;
   font-size: 12px;
 }
 
-.btn{
-  font-family: 'SUSE', sans-serif;
-}
 
-.header{
-  font-family: 'SUSE', sans-serif;
-}
+

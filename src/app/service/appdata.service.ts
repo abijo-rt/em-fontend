@@ -15,13 +15,13 @@ export interface ISidebar {
 export class AppdataService {
 
   private userSideBar : ISidebar[]= [
-    { label: 'My Events', routerLink: "/user/events", icon: 'pi pi-chart-bar'  },
+    { label: 'My Events', routerLink: "/user/events", icon: ''  },
     { label: 'Add Events', routerLink: '/user/addevents', icon:'pi pi-calendar-plus'  },
     { label: 'Contacts', routerLink: '/' ,icon:'pi pi-user-plus'},
   ]
   private vendorSideBar : ISidebar[]= [
-    { label: 'My Events', routerLink: "/vendor/newevents", icon: 'pi pi-chart-bar'  },
-    { label: 'Add Events', routerLink: '/vendor/events', icon:'pi pi-calendar-plus'  },
+    { label: 'New Events', routerLink: "/vendor/newevents", icon: 'pi pi-chart-bar'  },
+    { label: 'Past Events', routerLink: '/vendor/events', icon:'pi pi-calendar-plus'  },
     { label: 'Contacts', routerLink: '/' ,icon:'pi pi-user-plus'},
   ]
 

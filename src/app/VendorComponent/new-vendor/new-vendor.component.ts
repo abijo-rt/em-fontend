@@ -37,9 +37,10 @@ password: any;
       phone_no: this.phone_no,
       location: this.location,
       pincode: this.pincode,
-      c_name: this.c_name,
+      cname: this.c_name,
       password: this.password,
     }
+
     this.api.newVendor(newVenodor).subscribe((res) => console.log(res) )
     console.log(newVenodor)
   }

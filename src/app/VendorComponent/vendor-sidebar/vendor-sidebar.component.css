@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 .btn {
-  @apply  w-[80%] bg-[#e2f1fe] h-10 rounded-md  items-center justify-center flex font-semibold text-[#515563]
-  hover:bg-[#60b9ef] hover:text-black;
+  @apply  w-full bg-[#86D293] h-10 rounded-md  items-center justify-start pl-4 flex font-semibold text-white
+  hover:bg-white hover:text-[#86D293] hover:border-2 hover:border-[#86D293]
+  active:bg-white active:text-[#86D293] active:border-2 active:border-[#86D293];
 }

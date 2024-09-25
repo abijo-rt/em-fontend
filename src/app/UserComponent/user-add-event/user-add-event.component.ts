@@ -63,6 +63,7 @@ export class UserAddEventComponent {
   this.api.getVendorList(body).subscribe((data) => {
     this.dataservice.setVenDetails(data.body);
     const temp = this.dataservice.getVenDetails()
+    console.log(temp)
       this.dataservice.callFunction();
   })
   }

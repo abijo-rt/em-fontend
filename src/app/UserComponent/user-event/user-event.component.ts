@@ -14,12 +14,15 @@ import { CommonModule } from '@angular/common';
 export class UserEventComponent {
 
   constructor(private dataservice : DataService , private api :ApiserviceService){}
+
   userData : any | undefined ;
+  eventList : any | undefined ;
 
-  arr = [1,2,4,5,1,2,3,4,5,1,1,2,3,1,12,2,1,2,3,3,1,1,1,1,1,1,1,1,]
-
+  tezt(){
+    console.log(this.eventList);
+  }
+  arr = [1,2,3,5]
   ngOnInit(){
-    // this.userData = this.dataservice.getUserData()
     const token = localStorage.getItem('token');
     const decodeToken = this.dataservice.decodeToken(token)
 
@@ -27,6 +30,7 @@ export class UserEventComponent {
    const body = {
     id : decodeToken._id
    }
+
     this.api.getUserDetails(body).subscribe((data) => {
       console.log(data.body)
       this.userData = data.body;
@@ -34,6 +38,13 @@ export class UserEventComponent {
       console.log(this.userData.phone)
       console.log(this.userData.email)
     })
+
+    this.api.getEventList(body).subscribe((data) => {
+      console.log('Event list received')
+      this.eventList = data.body.events;
+      console.log(this.eventList)
+    })
+
   
 
   }

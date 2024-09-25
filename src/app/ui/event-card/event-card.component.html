@@ -2,11 +2,12 @@
 
 <div class="w-fit  h-fit border-2 rounded-md space-y-4">
     <div class="detail w-full h-8 bg-[#b6e8f3] space-x-2 flex items-center justify-center">
-        <span class="labelinfo">Gowtham ear piecering</span>
+        <span class="labelinfo">{{tempevent.name}}</span>
         <span>|</span>
-        <span class="labelinfo">30-2-2024</span>
+        <span class="labelinfo">{{tempevent.doe}}</span>
         <span>|</span>
-        <span class="labelinfo">location of event</span>
+        <span class="labelinfo">{{tempevent.LocOfEvent}}</span>
+        
     </div>
     <div class="w-full listheader flex flex-wrap ">
         <span class="vendorlistname w-36 font-semibold text-center">Vendor</span>
@@ -20,17 +21,17 @@
     </div>
     <div class="flex flex-col space-y-4 ">
 
-    <app-list-event vendorName="Food" ></app-list-event>
-    <app-list-event vendorName="Venue" ></app-list-event>
-    <app-list-event vendorName="Decor" ></app-list-event>
-    <app-list-event vendorName="Entertainment" class="text-sm "></app-list-event>
-    
+    <app-list-event vendorName="Food" [vendorDetails]="venList[0]" (dataEmitter)="receiveData($event) "></app-list-event>
+    <app-list-event vendorName="Venue" [vendorDetails]="venList[1]" (dataEmitter)="receiveData($event)" ></app-list-event>
+    <app-list-event vendorName="Decor"  [vendorDetails]="venList[2]" (dataEmitter)="receiveData($event)" ></app-list-event>
+    <app-list-event vendorName="Entertainment" [vendorDetails]="venList[3]"  (dataEmitter)="receiveData($event)" class="text-sm"></app-list-event>
 </div>
+    
 <div class="w-full h-2"></div>
    </div>
 
-   <div class="main flex flex-grow h-full border-2 rounded-md">
-    {{vendetails}}
+   <div class="main flex flex-grow h-full border-2 rounded-md justify-center">
+        <app-vendor-details [vendorDetails]="vendetails"></app-vendor-details>
    </div>
 
 </div>

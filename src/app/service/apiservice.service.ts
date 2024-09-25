@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
@@ -37,10 +37,36 @@ export class ApiserviceService {
   getUserDetails(data : any):Observable<HttpResponse<any>>{
     return this.https.post<any>(`${this.url}user/getUserDetails`, data ,{observe:'response'});
   }
+
+  getVendorDetails(data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}vendor/getVendorDetails`, data ,{observe:'response'});
+  }
   
   newEvent(data : any):Observable<HttpResponse<any>>{
     return this.https.post<any>(`${this.url}user/newEvent`, data ,{observe:'response'});
   }
+
+  getEventList(data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}user/eventList`, data ,{observe:'response'});
+  }
+  
+  getEventVendorList(data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}user/getEventVendorList`, data ,{observe:'response'});
+  }
+
+  updatePhasedata (data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}vendor/updatePhasedata`, data ,{observe:'response'});
+  }
+
+ getEventListForVendorPage(data: any): Observable<HttpResponse<any>> {
+  console.log("lof???")
+  const params = new HttpParams({ fromObject: data });
+  return this.https.get<any>(`${this.url}vendor/getEventListForVendorPage`, {
+    params: params,
+    observe: 'response'
+  });
+
+}
 
   
 

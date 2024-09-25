@@ -9,7 +9,7 @@
           <div 
             class="content ">
             <div *ngFor="let card of veunecards">
-              <app-vendor-card name="{{card.vendor_location}}" address="{{card.vendor_location}}" type="{{card.vendor_service}}" (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
+              <app-vendor-card name="{{card.vendor_cname}}" address="{{card.vendor_location}}" type="{{card.vendor_service}}" id ="{{card._id}}" (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
             </div>
 
           </div>
@@ -31,7 +31,7 @@
           <div
             class="content ">
             <div *ngFor="let card of catercards">
-              <app-vendor-card name="{{card.vendor_location}}" address="{{card.vendor_location}}" type="{{card.vendor_service}}" (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
+              <app-vendor-card name="{{card.vendor_location}}" address="{{card.vendor_location}}" type="{{card.vendor_service}}" id ="{{card._id}}" (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
           <div
             class="content">
             <div *ngFor="let card of decorcards">
-              <app-vendor-card name="{{card.vendor_location}}" address="{{card.vendor_location}}" type="{{card.vendor_service}} "  (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
+              <app-vendor-card name="{{card.vendor_location}}" address="{{card.vendor_location}}" type="{{card.vendor_service}} " id ="{{card._id}}"  (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@
           <div
             class="content ">
             <div *ngFor="let card of Entercards">
-              <app-vendor-card name="{{card.vendor_location}}" address="{{card.vendor_location}}" type="{{card.vendor_service}}" (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
+              <app-vendor-card name="{{card.vendor_location}}" address="{{card.vendor_location}}" type="{{card.vendor_service}}" id ="{{card._id}}" (dataEmitter)="handleVendorAdded($event)"></app-vendor-card>
             </div>
           </div>
         </div>

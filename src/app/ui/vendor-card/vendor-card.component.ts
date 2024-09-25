@@ -8,9 +8,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './vendor-card.component.css'
 })
 export class VendorCardComponent {
+
 @Input() name:string|undefined;
 @Input() address:string|undefined;
 @Input() type:string|undefined;
+@Input() id:string|undefined;
+
 icon:string|undefined;
 add:boolean=false
 @Output() dataEmitter = new EventEmitter<string>();
@@ -30,10 +33,12 @@ added() {
 }
 
   sendvendor() {
-   
+   console.log(this.name)
+   console.log(this.id)
+   console.log(this.type)
+  //  console.log(name)
     if(this.add){
-      // alert(this.name);
-      this.dataEmitter.emit(this.name);}
+      this.dataEmitter.emit(this.id);}
   }
 
 }

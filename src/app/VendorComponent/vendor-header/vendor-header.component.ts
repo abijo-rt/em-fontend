@@ -9,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class VendorHeaderComponent {
 
+  logout(){
+    
+    localStorage.removeItem('token')
+    window.location.reload()
+  }
+
 }

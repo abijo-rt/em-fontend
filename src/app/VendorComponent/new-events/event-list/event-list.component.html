@@ -1,0 +1,17 @@
+<div class="w-64 h-28  rounded-md shadow-xl flex flex-col justify-evenly items-center bg-green-50">
+    <div class="w-full text-center font-semibold">{{event.event.name}}</div>
+    <div class="w-full flex flex-row justify-evenly items-center">
+        <div>
+            <div class="w-full ">Date : {{event.event.doe}}</div>
+            <div class="w-full  rounded-md p-1 flex items-center justify-evenly space-x-2" [ngClass]=" event.event.status ? 'bg-green-100' : ' bg-yellow-100'"><img src="../../../../assets/vendor/pending.svg" class="size-6" srcset=""><span class="text-bold text-[#e1a939]">{{event.event.status ? 'Event Completed' : 'Event Pending'}}</span></div>
+        </div>
+        <button class="viewbtn" (click)="showEventDetails()"><img src="../../../assets/vendor/viewbtn.svg" alt="" srcset=""></button>
+    </div>
+
+</div>
+
+<p-dialog header="Event showDetails" [modal]="true" [(visible)]="visibleEventDetails" [style]="{ width: '50rem' }">
+  <app-dialog [eventdata]="event"></app-dialog>
+    
+     
+    </p-dialog>

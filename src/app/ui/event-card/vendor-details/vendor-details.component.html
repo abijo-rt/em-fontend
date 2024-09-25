@@ -1,0 +1,40 @@
+<div class="w-[28rem] h-1/4  flex flex-col p-2 border-b-2 space-y-2">
+    <!-- <div class="h-1  bg-black"></div> -->
+    <div class="w-full  flex items-center  space-x-5 flex-row">
+        <span class="flex items-center justify-center text-xl font-medium "><img src="../../../../assets/userprofile.svg" class="size-10 mr-2" alt=""> {{vendorDetails.vendorDetails.vendor_location}}</span>
+        <span class="h-8 flex items-center justify-center "><img src="../../../../assets/foodicon.svg" class="size-8 mr-2 p-2 rounded-full bg-[#f1f5f8]" alt="">{{vendorDetails.vendorDetails.vendor_service}}</span>
+    </div>
+    <div class="w-full  flex items-center">
+        <div class="flex flex-col space-y-2">
+        <span class="flex items-center justify-center rounded-full p-1 bg-[#f1f5f8] text-sm pr-2"><img src="../../../../assets/locationicon.svg" class="size-5 mr-2" alt=""> {{vendorDetails.vendorDetails.vendor_location}}</span>
+        <span class="flex items-center justify-center rounded-full p-1 bg-[#f1f5f8] text-sm pr-2" ><img src="../../../../assets/phoneicon.svg" class="size-5 mr-2" alt=""> {{vendorDetails.vendorDetails.vendor_contact}}</span>
+        </div>
+        <div class="flex justify-center flex-grow space-x-5">
+        <div class="flex  items-center justify-center h-fit " ><button class="visitbtn" (click)="test()">Visit Site</button></div>
+        <div class="flex  items-center justify-center h-fit"><button class="visitbtn">Call</button></div>
+        </div>
+    </div>
+</div>
+
+<div class="w-full h-3/4 overflow-y-scroll flex flex-col p-2 space-y-2">
+
+    <div class="w-full min-h-16 border-2 rounded-md flex items-center justify-center" > {{ vendorDetails.vendorEventDetails[0].status[0] ? 'ORDER ACCEPTED ' : 'ORDER PENDING ' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[0]? '../../../../assets/complete.svg' : '../../../../assets/pending.svg'" alt=""> </div>
+    <div class="w-full min-h-16 border-2 rounded-md flex items-center justify-center"> {{ vendorDetails.vendorEventDetails[0].status[1] ? 'REQUIREMENT GATHERED ' : 'REQUIREMENT NOT YET GATHERED ' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[1] ? '../../../../assets/complete.svg' : '../../../../assets/pending.svg'" alt=""> </div>
+    <div class="w-full h-fit flex-col border-2 rounded-md flex items-center justify-center p-5">
+        <span class="flex" > {{ vendorDetails.vendorEventDetails[0].status[2] ? 'BILL AMOUNT FINALISED ' : 'BILL AMOUNT NOT YET FINALISED' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[2]? '../../../../assets/complete.svg' : '../../../../assets/pending.svg'" alt=""></span>
+        <div *ngIf="vendorDetails.vendorEventDetails[0].status[2] " class="h-56 w-[90%] border-2 rounded-md" >
+            <span class="w-full text-center">Bill rep</span>
+            <span>{{vendorDetails.vendorEventDetails[0].billamount}}</span>
+        </div>        
+        </div>
+    <div class="w-full min-h-16 border-2 rounded-md flex items-center justify-center"> {{ vendorDetails.vendorEventDetails[0].status[3] ? 'ADAVANCE AMOUNT RECIVED ' : 'ADAVANCE AMOUNT PENDING' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[3] ? '../../../../assets/complete.svg' : '../../../../assets/pending.svg'" alt=""> </div>
+    <div class="w-full min-h-16 border-2 rounded-md flex items-center justify-center"> {{ vendorDetails.vendorEventDetails[0].status[4] ? 'EVENT ORGANISED' : 'EVENT NOT START' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[4]? '../../../../assets/complete.svg' : '../../../../assets/pending.svg'" alt=""> </div>
+    <div class="w-full h-fit border-2 rounded-md flex flex-col "> 
+    <span class="w-full text-center">FEEDBACK</span>
+    <div>
+        <div class="w-full pt-2 pl-2 pr-2"><textarea name="" id="" class="feedback"></textarea></div>
+        <div class="w-full p-2 flex justify-end"><button type="button" class="feedbackbtn">Submit</button></div>
+    </div>    
+    </div>
+    <div class="w-full min-h-16 border-2 rounded-md flex items-center justify-center"> {{ vendorDetails.vendorEventDetails[0].status[6] ? 'ALL AMOUNT RECIVED ' : 'REMAINING AMOUNT PENDING' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[6]? '../../../../assets/complete.svg' : '../../../../assets/pending.svg'" alt=""> </div>
+</div>

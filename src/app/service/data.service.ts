@@ -7,6 +7,7 @@ export interface Vendor{
   vendor_contact:string
   vendor_location:string
   vendor_service:string
+  _id:string
 }
 
 @Injectable({

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.greenborder {
+    @apply border-[#c8e2d3] border rounded-md
+}
+
+.callbtn {
+    @apply border-[#76B792] p-2 w-3/4 border-4 rounded-md text-[#76B792]
+}
+
+.billinput{
+    @apply border-[#86d293] border-2 bg-[#e7f6e9] rounded-md
+}
+

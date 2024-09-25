@@ -7,14 +7,15 @@ import { PastEventsComponent } from './VendorComponent/past-events/past-events.c
 import { NewEventsComponent } from './VendorComponent/new-events/new-events.component';
 import { UserHomeComponent } from './UserComponent/user-home/user-home.component';
 import { RoleGuard } from './service/authentication/role.guard';
+import { Page404Component } from './LandingPage/page404/page404.component';
 
 export const routes: Routes = [
 
-
+  { path: '', redirectTo: '/main', pathMatch: 'full' },
   { 
     path: 'main', component: MainComponent, 
   },
-
+  
   {
     path: 'user', component: UserHomeComponent,
     canActivate: [RoleGuard],
@@ -33,6 +34,7 @@ export const routes: Routes = [
       { path: 'events', component: PastEventsComponent },
     ]
   },
+  { path: '**', component: Page404Component },
 
 
 

@@ -1,0 +1,84 @@
+
+<div class="space-y-2 relative">
+
+    <div *ngIf="loading" class=""><img src="../../../../../assets/loading.svg" class="size-32 absolute left-[42%] top-[12rem]" alt="" srcset=""></div>
+
+    <div class="w-full h-fit p-4 greenborder flex flex-row bg-green-50">
+        <div class="w-3/4 flex flex-col space-y-3">
+            <div class="flex w-full justify-start space-x-3">
+                <span class="flex items-center justify-center text-xl font-semibold"><img src="../../../../../assets/vendor/userprofile.svg" alt="" class ="pr-2"> {{eventdata.event.name}}</span>
+                <span class="border-2 border-yellow-400  flex items-center justify-center bg-yellow-100 pr-2 pl-2 p-1 rounded-md"><img src="../../../../../assets/vendor/pending.svg" alt="" class ="pr-2" srcset="">  {{eventdata.event.status ? 'COMPLETED' : 'PENDING'}}</span>
+            </div>
+            <div class="flex w-full justify-start space-x-3">
+                <span class="flex items-center justify-center "><img src="../../../../../assets/vendor/calender.svg" alt="" class ="pr-2" srcset="">  {{eventdata.event.doe}}</span>
+                <span class="flex items-center justify-center "><img src="../../../../../assets/vendor/phoneicon.svg" alt="" class ="pr-2" srcset="">  {{eventdata.event.phone}}</span>
+                <span class="flex items-center justify-center "><img src="../../../../../assets/vendor/locationicon.svg" alt="" class ="pr-2" srcset="">  {{eventdata.event.LocOfEvent}}</span>
+            </div>
+        </div>
+        <div class="w-1/4 flex items-center justify-center">
+            <button class="callbtn">CALL CLIENT</button>
+        </div>
+    </div>
+
+    <!-- PHASE 1 - 2 -->
+
+    <div class="w-full h-20 flex  space-x-2 ">
+    <div class="w-1/2 h-full greenborder flex justify-evenly items-center bg-green-50 ">
+    <span>Do you accepet this order</span>
+        <button type="button" (click)="updateStatus(0,true)" ><img src="../../../../../assets/complete.svg" alt="" srcset=""></button>
+        <button type="button" (click)="updateStatus(0,false)"  ><img src="../../../../../assets/reject.svg" alt="" srcset=""></button>
+    </div>
+    <div class="w-1/2 h-full greenborder " [ngClass] = " eventdata.status[0] ? 'bg-green-50' : 'bg-[#fef9c3]' ">
+        <div *ngIf="!eventdata.status[0]" class="w-full h-full flex items-center justify-center"><img src="../../../../../assets/lock.svg" alt="" srcset=""></div>
+        <div *ngIf="eventdata.status[0]" class="w-full h-full flex items-center justify-center">
+            <span>Completed Requirement Gathering</span>
+            <button type="button" (click)="updateStatus(1,true)"  > <img src="../../../../../assets/complete.svg" alt="" srcset=""></button>
+            <button type="button" (click)="updateStatus(1,false)"  ><img src="../../../../../assets/reject.svg" alt="" srcset=""></button>
+        </div>
+    </div>
+    </div>
+
+    <!-- PHASE 3 - 4 -->
+
+    <div class="w-full h-24 flex  space-x-2 justify-center">
+    
+    <div class="w-1/2 h-full greenborder " [ngClass] = " eventdata.status[1] ? 'bg-green-50' : 'bg-[#fef9c3]' ">
+
+        <div *ngIf="!eventdata.status[1] "   class="w-full h-full flex items-center justify-center"><img src="../../../../../assets/lock.svg" alt="" srcset=""></div>
+        <div *ngIf="eventdata.status[1] "   class="w-full h-full flex flex-col items-center justify-evenly">
+            <div class="flex w-full justify-evenly items-center">
+                <span>Finalised bill amount </span>
+                <button type="button" (click)="updateStatus(2,true)"><img src="../../../../../assets/complete.svg" alt="" srcset=""></button>
+                <button type="button" (click)="updateStatus(2,false)"><img src="../../../../../assets/reject.svg" alt="" srcset=""></button>
+            </div>
+            <div class="flex">
+                <input type="text" class="billinput">
+                </div>
+        </div>
+        
+    </div>
+    
+    <div class="greenborder w-1/2 h-full  " [ngClass] = " eventdata.status[2] ? 'bg-green-50' : 'bg-[#fef9c3]' ">
+        <div *ngIf="!eventdata.status[2]"   class="w-full h-full flex items-center justify-center"><img src="../../../../../assets/lock.svg" alt="" srcset=""></div>
+        <div *ngIf="eventdata.status[2]"    class="w-full h-full flex flex-col items-center justify-center">
+            <div class="flex w-full justify-evenly items-center">
+                <span>Recived advance payment </span>
+                <button type="button"  (click)="updateStatus(3,true)"><img src="../../../../../assets/complete.svg" alt="" srcset=""></button>
+                <button type="button" (click)="updateStatus(3,false)"><img src="../../../../../assets/reject.svg" alt="" srcset=""></button>
+            </div>
+            <div class="flex">
+                {{eventdata.billamount}}
+                </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- PHASE - 3 -->
+
+    <div class="w-full h-52 border-2 rounded-md"></div>
+    <div class="w-full h-52 border-2 rounded-md"></div>
+    <div class="w-full h-52 border-2 rounded-md"></div>
+
+
+
+</div>
