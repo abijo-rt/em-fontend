@@ -1,8 +1,11 @@
 {
   "routes": [
-    "/about",
-    "/events",
-    "/home",
-    "/pricing"
+    "/main",
+    "/user",
+    "/user/addevents",
+    "/user/events",
+    "/vendor",
+    "/vendor/events",
+    "/vendor/newevents"
   ]
 }
