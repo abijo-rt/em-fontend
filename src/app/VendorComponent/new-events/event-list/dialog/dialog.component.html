@@ -1,5 +1,5 @@
 
-<div class="space-y-2 relative">
+<div class="h-fit space-y-2 relative">
 
     <div *ngIf="loading" class=""><img src="../../../../../assets/loading.svg" class="size-32 absolute left-[42%] top-[12rem]" alt="" srcset=""></div>
 
@@ -22,18 +22,31 @@
 
     <!-- PHASE 1 - 2 -->
 
-    <div class="w-full h-20 flex  space-x-2 ">
-    <div class="w-1/2 h-full greenborder flex justify-evenly items-center bg-green-50 ">
-    <span>Do you accepet this order</span>
-        <button type="button" (click)="updateStatus(0,true)" ><img src="../../../../../assets/complete.svg" alt="" srcset=""></button>
-        <button type="button" (click)="updateStatus(0,false)"  ><img src="../../../../../assets/reject.svg" alt="" srcset=""></button>
+    <div class="w-full h-fit flex  space-x-2 ">
+    <div class="w-1/2 h-40 greenborder flex justify-evenly items-center bg-green-50 ">
+        <div *ngIf="eventdata.eventStatus == 1" class="w-full h-full flex items-center justify-center">
+            <div class="h-3/4 w-3/4 flex items-center justify-center font-bold text-xl">ORDER ACCECTED</div>
+        </div>
+        <div *ngIf="eventdata.eventStatus == 0" class="w-full h-full flex items-center justify-center">
+            <span>Do you accepet this order</span>
+            <button type="button" (click)="updateStatus(0,true)" ><img src="../../../../../assets/complete.svg" alt="" srcset=""></button>
+            <button type="button" (click)="updateStatus(0,false)"  ><img src="../../../../../assets/reject.svg" alt="" srcset=""></button>
+        </div>
     </div>
-    <div class="w-1/2 h-full greenborder " [ngClass] = " eventdata.status[0] ? 'bg-green-50' : 'bg-[#fef9c3]' ">
-        <div *ngIf="!eventdata.status[0]" class="w-full h-full flex items-center justify-center"><img src="../../../../../assets/lock.svg" alt="" srcset=""></div>
-        <div *ngIf="eventdata.status[0]" class="w-full h-full flex items-center justify-center">
-            <span>Completed Requirement Gathering</span>
-            <button type="button" (click)="updateStatus(1,true)"  > <img src="../../../../../assets/complete.svg" alt="" srcset=""></button>
-            <button type="button" (click)="updateStatus(1,false)"  ><img src="../../../../../assets/reject.svg" alt="" srcset=""></button>
+    <div class="w-1/2 h-fit greenborder flex items-center justify-center space-y-2" [ngClass] = " eventdata.status[0] ? 'bg-green-50' : 'bg-[#fef9c3]' ">
+        <div *ngIf="eventdata.eventStatus != 1" class="w-full h-full flex items-center justify-center"><img src="../../../../../assets/lock.svg" alt="" srcset=""></div>
+        <div *ngIf="eventdata.eventStatus == 1 && !eventdata.status[1] " class="w-full h-60 flex flex-col items-center justify-center space-y-2">
+            <span class="font-bold">Upload Requrment File and Bill (PDF)</span>
+            <input type="file" (change)="onFileSelected($event)" />
+            
+            <div class="w-full flex justify-between pl-4 pr-4"><span>Final Bill </span><input type="text" class=  "pl-1 billinput"   placeholder="( enter amount in rs )"  [(ngModel)]="bill_amount"></div>
+            <div class="w-full flex justify-between pl-4 pr-4"><span>Advance Bill </span><input type="text" class="pl-1 billinput" placeholder="( enter amount in rs )"   [(ngModel)]="advance_bill_amount"></div>
+            <div class="w-full flex justify-end pr-4 pb-2"><button type="button" class="border rounded-md p-1 bg-red-500 text-white" (click)="onUpload()">Upload file</button></div>
+        </div>
+        <div *ngIf="eventdata.status[1]" class="w-full h-40 flex flex-col items-center justify-center space-y-4">
+            <div class=" w-full flex items-center justify-center font-bold text-xl">REQUREMNT AND BILL FINALISED</div>
+            <div class=" w-3/4  pl-4   flex items-center justify-start font-bold ">Bill Amount : <span class="flex space-x-2"> {{eventdata.billamount}} <img src="../../../../../assets/money.svg" class="size-5" alt=""></span></div>
+            <div class=" w-3/4  pl-4  flex items-center justify-start font-bold ">Bill Advance Amount  : <span class="flex space-x-2"> {{eventdata.billamount_advance}}   <img src="../../../../../assets/money.svg" class="size-5" alt=""> </span></div>
         </div>
     </div>
     </div>
@@ -46,38 +59,57 @@
 
         <div *ngIf="!eventdata.status[1] "   class="w-full h-full flex items-center justify-center"><img src="../../../../../assets/lock.svg" alt="" srcset=""></div>
         <div *ngIf="eventdata.status[1] "   class="w-full h-full flex flex-col items-center justify-evenly">
-            <div class="flex w-full justify-evenly items-center">
-                <span>Finalised bill amount </span>
-                <button type="button" (click)="updateStatus(2,true)"><img src="../../../../../assets/complete.svg" alt="" srcset=""></button>
-                <button type="button" (click)="updateStatus(2,false)"><img src="../../../../../assets/reject.svg" alt="" srcset=""></button>
-            </div>
-            <div class="flex">
-                <input type="text" class="billinput">
-                </div>
+                <!-- <div><label class="pr-2">Adavnce paid :</label>
+                <progress class="  " value="32" max="100" ></progress></div> -->
+                <div class="w-fit flex flex-col"><label class="font-semibold flex">Total Amount Paid : {{eventdata.billpaid}} <img src="../../../../../assets/money.svg" class="size-5" alt=""></label>
+                <label class="font-semibold flex">Total Amount Pending : {{ eventdata.billamount -  eventdata.billpaid}} <img src="../../../../../assets/money.svg" class="size-5" alt=""> </label></div>
+                <progress class="  " value="{{eventdata.billpaid}}" max="{{ eventdata.billamount -  eventdata.billpaid}}" ></progress>
         </div>
         
     </div>
     
     <div class="greenborder w-1/2 h-full  " [ngClass] = " eventdata.status[2] ? 'bg-green-50' : 'bg-[#fef9c3]' ">
         <div *ngIf="!eventdata.status[2]"   class="w-full h-full flex items-center justify-center"><img src="../../../../../assets/lock.svg" alt="" srcset=""></div>
-        <div *ngIf="eventdata.status[2]"    class="w-full h-full flex flex-col items-center justify-center">
-            <div class="flex w-full justify-evenly items-center">
-                <span>Recived advance payment </span>
-                <button type="button"  (click)="updateStatus(3,true)"><img src="../../../../../assets/complete.svg" alt="" srcset=""></button>
-                <button type="button" (click)="updateStatus(3,false)"><img src="../../../../../assets/reject.svg" alt="" srcset=""></button>
-            </div>
-            <div class="flex">
-                {{eventdata.billamount}}
-                </div>
+        <div *ngIf="eventdata.status[2]"    class="w-full h-full flex flex-col items-center justify-evenly">
+                <div class="w-fit flex flex-col"><label class="font-semibold flex">Total Advance Paid : {{eventdata.billpaid}} <img src="../../../../../assets/money.svg" class="size-5" alt=""></label>
+                <label class="font-semibold flex">Total Advance Pending : {{ eventdata.billamount_advance -  eventdata.billpaid}} <img src="../../../../../assets/money.svg" class="size-5" alt=""> </label></div>
+                <progress class="   " value="{{eventdata.billpaid}}" max="{{ eventdata.billamount_advance -  eventdata.billpaid}}" ></progress>
         </div>
     </div>
     </div>
 
     <!-- PHASE - 3 -->
 
-    <div class="w-full h-52 border-2 rounded-md"></div>
-    <div class="w-full h-52 border-2 rounded-md"></div>
-    <div class="w-full h-52 border-2 rounded-md"></div>
+    <div class="w-full h-fit flex space-x-2">
+        <div class=" h-fit flex flex-col w-1/2 border-2 rounded-md  bg-green-50 pl-8 p-4 items-center space-y-3">
+            <span class="w-full flex justify-center ">Update Payment </span>
+            <div class="w-full items-start">
+            <label class="flex space-x-2 items-center justify-between w-1/3">
+                <img class="size-5" src="../../../../../assets/payment/upi.svg" alt=""> UPI
+                <input type="radio" name="pay" value="upi" [(ngModel)]="selectedOption" >
+              </label>
+              
+              <label class="flex space-x-2 items-center justify-between w-1/3">
+                <img class="size-5" src="../../../../../assets/payment/card.svg" alt="">Card
+                  <input type="radio" name="pay" value="card" [(ngModel)]="selectedOption" >
+              </label>
+              
+              <label class="flex space-x-2 items-center justify-between w-1/3">
+                 <img class="size-5" src="../../../../../assets/payment/cash.svg" alt=""> Cash
+                  <input type="radio" name="pay" value="cash" [(ngModel)]="selectedOption" >
+              </label>
+            </div>
+            <div class="w-full flex justify-start space-x-10"><label for="">Amount</label><input [(ngModel)]="paidamount" class="border bg-green-100 border-emerald-500 rounded-lg pl-1 " type="text" value=""></div>
+           <button class="rounded-lg bg-green-600 w-3/4 text-white p-1 font-bold " (click)="billpaybtn()" >submit</button> 
+        </div>
+
+        <div class=" flex flex-grow w-1/2 border-2 rounded-md" [ngClass] = " eventdata.status[6] ? 'bg-green-50' : 'bg-[#fef9c3]' " >
+            <div *ngIf="!eventdata.status[6]" class="h-full w-full flex items-center justify-center"><img src="../../../../../assets/lock.svg" alt="" srcset=""> </div>
+        </div>
+    </div>
+
+    <div class="w-full h-96 border-2 rounded-md"></div>
+    <!-- <div class="w-full h-52 border-2 rounded-md"></div> -->
 
 
 

@@ -58,6 +58,37 @@ export class ApiserviceService {
     return this.https.post<any>(`${this.url}vendor/updatePhasedata`, data ,{observe:'response'});
   }
 
+  updatefilename (data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}vendor/updatefilename`, data ,{observe:'response'});
+  }
+
+  updatebill (data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}vendor/updatebill`, data ,{observe:'response'});
+  }
+
+  updatepaymentbill (data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}vendor/updatepaymentbill`, data ,{observe:'response'});
+  }
+
+  downloadfile(filename: string): Observable<Blob> {
+    console.log(filename)
+    return this.https.get(`${this.url}vendor/download/${filename}`, {
+        responseType: 'blob',
+    });
+}
+
+
+  uploadfile(data: FormData): Observable<HttpResponse<any>> {
+    console.log('FormData being sent:', data);
+  
+    return this.https.post<any>(`${this.url}vendor/upload`, data, {
+      observe: 'response'  // Observing the full HTTP response
+    });
+  }
+  
+
+
+
  getEventListForVendorPage(data: any): Observable<HttpResponse<any>> {
   console.log("lof???")
   const params = new HttpParams({ fromObject: data });

@@ -1,3 +1,5 @@
+
+
 <div class="w-[28rem] h-1/4  flex flex-col p-2 border-b-2 space-y-2">
     <!-- <div class="h-1  bg-black"></div> -->
     <div class="w-full  flex items-center  space-x-5 flex-row">
@@ -19,12 +21,26 @@
 <div class="w-full h-3/4 overflow-y-scroll flex flex-col p-2 space-y-2">
 
     <div class="w-full min-h-16 border-2 rounded-md flex items-center justify-center" > {{ vendorDetails.vendorEventDetails[0].status[0] ? 'ORDER ACCEPTED ' : 'ORDER PENDING ' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[0]? '../../../../assets/complete.svg' : '../../../../assets/pending.svg'" alt=""> </div>
-    <div class="w-full min-h-16 border-2 rounded-md flex items-center justify-center"> {{ vendorDetails.vendorEventDetails[0].status[1] ? 'REQUIREMENT GATHERED ' : 'REQUIREMENT NOT YET GATHERED ' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[1] ? '../../../../assets/complete.svg' : '../../../../assets/pending.svg'" alt=""> </div>
-    <div class="w-full h-fit flex-col border-2 rounded-md flex items-center justify-center p-5">
-        <span class="flex" > {{ vendorDetails.vendorEventDetails[0].status[2] ? 'BILL AMOUNT FINALISED ' : 'BILL AMOUNT NOT YET FINALISED' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[2]? '../../../../assets/complete.svg' : '../../../../assets/pending.svg'" alt=""></span>
-        <div *ngIf="vendorDetails.vendorEventDetails[0].status[2] " class="h-56 w-[90%] border-2 rounded-md" >
-            <span class="w-full text-center">Bill rep</span>
-            <span>{{vendorDetails.vendorEventDetails[0].billamount}}</span>
+    <div class="w-full min-fit border-2 rounded-md flex flex-col items-center justify-center p-4 space-y-2"> 
+       <span class="w-full flex  justify-center"> {{ vendorDetails.vendorEventDetails[0].status[1] ? 'REQUIREMENT GATHERED ' : 'REQUIREMENT NOT YET GATHERED ' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[1] ? '../../../../assets/complete.svg' : '../../../../assets/pending.svg'" alt=""> </span>
+        <div *ngIf="vendorDetails.vendorEventDetails[0].status[1]" class="flex flex-col space-y-2"> 
+            <span>You can download the Requremnt and bill recipt here</span>
+            <div class="w-full flex justify-end pr-2"><button class="downloadbtn" (click)="download()"><img src="../../../../assets/download.svg" class="size-5" alt="">Download</button></div>
+        </div>
+    
+    
+    </div>
+        
+        
+        
+        
+    <div class="w-full h-fit flex-col border-2 rounded-md flex items-center justify-center p-5 bg-yellow-100 space-y-2">
+        <span class="flex items-center" > {{ vendorDetails.vendorEventDetails[0].status[2] ? 'FINALISED BILL  DEATILS ' : 'BILL AMOUNT NOT YET FINALISED' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[2]? '../../../../assets/money2.svg' : '../../../../assets/pending.svg'" alt=""></span>
+        <div *ngIf="vendorDetails.vendorEventDetails[0].status[2] " class="h-fit w-[90%] flex flex-col space-y-2" >
+
+            <span class="flex">Total Bill : {{vendorDetails.vendorEventDetails[0].billamount}} <img src="../../../../assets/money.svg" class="size-5" alt=""></span>
+            <span class="flex">Adavnce Bill : {{vendorDetails.vendorEventDetails[0].billamount_advance}} <img src="../../../../assets/money.svg" class="size-5" alt=""></span>
+            <span class="flex">Paid Bill Amount : {{vendorDetails.vendorEventDetails[0].billpaid}} <img src="../../../../assets/money.svg" class="size-5" alt=""></span>
         </div>        
         </div>
     <div class="w-full min-h-16 border-2 rounded-md flex items-center justify-center"> {{ vendorDetails.vendorEventDetails[0].status[3] ? 'ADAVANCE AMOUNT RECIVED ' : 'ADAVANCE AMOUNT PENDING' }} <img class="ml-2" [src]="vendorDetails.vendorEventDetails[0].status[3] ? '../../../../assets/complete.svg' : '../../../../assets/pending.svg'" alt=""> </div>

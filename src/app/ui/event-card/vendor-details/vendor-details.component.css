@@ -15,3 +15,11 @@
     @apply w-fit h-fit rounded-md  bg-[#68D2E8] p-1  text-white hover:text-[#68D2E8] hover:border-[#68D2E8] hover:bg-white 
     hover:border-2
 }
+
+.downloadbtn{
+    @apply rounded-md border-2 border-red-500 p-1 text-red-500 bg-[#fbd2d2] font-semibold flex items-center 
+}
+
+div{
+    @apply border-[#caf1f9]
+}

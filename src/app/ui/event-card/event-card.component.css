@@ -18,3 +18,7 @@
 .main {
     height: 32rem;
 }
+
+div{
+    @apply border-[#caf1f9]
+}

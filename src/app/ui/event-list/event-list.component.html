@@ -1,4 +1,7 @@
-<div class="w-64 h-28  shadow-xl rounded-md  flex flex-col justify-evenly items-center bg-[#e1f6fa]">
+<div class="relative w-64 h-28  shadow-xl rounded-md  flex flex-col justify-evenly items-center bg-[#e1f6fa]">
+    <div *ngIf="badge != 0" class="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full text-white text-xs flex justify-center items-center">
+        {{badge}} 
+      </div>
     <div class="w-full text-center">{{event.name}}</div>
     <div class="w-full flex flex-row justify-evenly items-center">
         <div>
@@ -12,6 +15,4 @@
 
 <p-dialog header="Event showDetails" [modal]="true" [(visible)]="visibleEventDetails" [style]="{ width: '75rem' }">
     <app-event-card [event]="event" ></app-event-card>
-    
-     
     </p-dialog>

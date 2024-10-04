@@ -4,10 +4,11 @@ import { DialogModule } from 'primeng/dialog';
 import { UserEventDetailsComponent } from "../../UserComponent/user-event-details/user-event-details.component";
 import { EventCardComponent } from "../event-card/event-card.component";
 import { ApiserviceService } from '../../service/apiservice.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-event-list',
   standalone: true,
-  imports: [NewVendorComponent, DialogModule, UserEventDetailsComponent, EventCardComponent],
+  imports: [NewVendorComponent, DialogModule, UserEventDetailsComponent, EventCardComponent,CommonModule],
   templateUrl: './event-list.component.html',
   styleUrl: './event-list.component.css'
 })
@@ -16,17 +17,14 @@ export class EventListComponent {
   constructor(private api : ApiserviceService){}
 
   @Input() event: any;
-  
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if (changes['event']) {
-  //     console.log('Event updated:', this.event);
-  //   }
-  // }
+  badge : number = 1
+
   vendorlist : any
   vendata : any
   visibleEventDetails: boolean = false;
 
   showEventDetails() {
+    this.badge = 0
     this.visibleEventDetails=true;
     // this.vendata= this.event
     console.log("ecent list")
