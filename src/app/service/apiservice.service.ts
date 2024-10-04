@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { environment } from '../../../environment.prod';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiserviceService {
-
-  private url = 'http://localhost:3000/';
+  private url = environment.URL
+  // private url = 'http://localhost:3000/';
 
   constructor(private https : HttpClient) { }
   
