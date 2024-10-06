@@ -9,13 +9,13 @@ import { environment } from '../../../environment.prod';
 })
 export class ApiserviceService {
   private url = environment.URL
-  // private url = 'http://localhost:3000/';
+//  private url = 'http://localhost:3000/';
 
   constructor(private https : HttpClient) { }
   
 
   newVendor(data : any):Observable<HttpResponse<any>>{
-    return this.https.post<any>(`${this.url}vendor/newvendor`,data,{observe:'response'});
+    return this.https.post<any>(`${this.url}vendor/newvendor`, data , {observe:'response'});
   }
 
   loginVendor(data : any) : Observable<HttpResponse<any>>{

@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ApiserviceService } from '../../../../service/apiservice.service';
 import { FormsModule } from '@angular/forms';
+import { TableComponent } from './table/table.component';
 
 @Component({
   selector: 'app-dialog',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,TableComponent],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css'
 })

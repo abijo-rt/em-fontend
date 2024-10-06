@@ -12,13 +12,19 @@ import { Router } from '@angular/router';
   styleUrl: './login-vendor.component.css',
 })
 export class LoginVendorComponent {
+  usererror: boolean = false;
+  passworderror: boolean = false ;
+  errorMessage: string | undefined;
+loading: boolean  = false;
+
+
   constructor(private api: ApiserviceService , private router : Router) {}
 
   password: string | undefined;
   phone_no: string | undefined;
 
   cancel() {
-    throw new Error('Method not implemented.');
+    this.loading = !this.loading
   }
 
   submit() {
@@ -26,21 +32,38 @@ export class LoginVendorComponent {
       phone_no: this.phone_no,
       password: this.password,
     };
-    this.api.loginVendor(data).subscribe((res) => 
-    {
-      if (res.body.token) {
-        
-        localStorage.setItem('token', res.body.token); 
-     
-        const decodedToken = this.decodeToken(res.body.token);
-        console.log(decodedToken.role)
-        if (decodedToken.role === 'vendor') {
-          this.api.getUserDetails(decodedToken.id).subscribe((data) => console.log(data))
-          this.router.navigate(['/vendor']);
-        } else {
-          this.router.navigate(['/user']);
+    this.api.loginVendor(data).subscribe({
+      next : (res) => 
+        {
+          if (res.body.token) {
+            localStorage.setItem('token', res.body.token); 
+            const decodedToken = this.decodeToken(res.body.token);
+            console.log(decodedToken.role)
+            if (decodedToken.role === 'vendor') {
+              this.api.getUserDetails(decodedToken.id).subscribe((data) => console.log(data))
+              this.router.navigate(['/vendor']);
+            } else {
+              this.router.navigate(['/user']);
+            }
+          }
+        }, error : (err: any) => {
+          // Handle error scenario
+          console.error("Login failed", err);
+          this.usererror  = false 
+          this.passworderror  = false 
+          // You can add specific error handling logic here
+          if (err.status === 404) {
+            this.errorMessage = 'Username not found';
+            this.usererror = true
+          } else if (err.status === 401) {
+            this.errorMessage = 'Incorrect password';
+            this.passworderror = true
+          } else {
+            this.errorMessage = 'An unknown error occurred. Please try again later.';
+          }
+          console.log(this.errorMessage)
+          console.log(this.usererror)
         }
-      }
     })
 
 

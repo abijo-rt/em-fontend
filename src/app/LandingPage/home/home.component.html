@@ -4,15 +4,28 @@
        <div class="flex flex-col w-1/2 space-y-10 ">
         <p class=" para sm:h-fit font-bold sm:w-full  text-4xl sm:text-8xl h-fit w-full text-wrap ">Great events start with great planning</p>
 
-         <button (click)="showDialogNewUser() " class="h-10 w-64 bg-white text-xl font-semibold rounded-full shadow-lg"  label="Show" >Get started</button>
-         <!-- <button (click)="showDialogNewUser() " class="h-10 w-64 bg-white text-xl font-semibold rounded-full shadow-lg"  label="Show" >Get started</button> -->
+         <button (click)="showDialogNewUser() " class="startbtn"  label="Show" >Get started</button>
       </div>
       <div class="h-3/4 w-1/2 flex flex-col items-center justify-start bg-cover" style="background-image: url('../assets/ep.png');">
       
        
       </div>
     </div>
-    <div class="h-64 w-1/2  rounded-md bg-[white] absolute bottom-32  border-[#10AE0D]">
+    <div class="h-64 w-1/2  rounded-md bg-[white] absolute bottom-32 p-2 flex space-x-2 ">
+      <div class="h-full w-1/3 flex flex-col items-center justify-center space-y-4">
+         <img src="../../../assets/landing/hpyuser.png" class="size-32" alt="">
+         <span class="text-xl font-bold text-gray-700">Happy User - {{totaluser}}</span> 
+   </div>
+      <div class="h-full w-1/3 flex flex-col items-center justify-center space-y-4">
+         <img src="../../../assets/landing/hpyvendor.png" class="size-32" alt="">
+         <span class="text-xl font-bold text-gray-700">Happy Venodor - {{totalvendor}}</span> 
+   </div>
+      <div class="h-full w-1/3 flex flex-col items-center justify-center space-y-4">
+         <img src="../../../assets/landing/hayevents.png" class="size-32" alt="">
+         <span class="text-xl font-bold text-gray-700">Happy Events - {{totalevent}}</span> 
+   </div>
+
+
     </div>
     <div class="h-32 w-full ">
 

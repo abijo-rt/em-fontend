@@ -19,3 +19,7 @@
     font-weight: 400;
     font-style: normal;
 }
+
+.startbtn{
+    @apply hover:bg-[#73EC8B] hover:text-white h-12 w-52 bg-white text-xl font-bold rounded-full shadow-lg 
+}

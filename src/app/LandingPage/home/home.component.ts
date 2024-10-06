@@ -21,7 +21,9 @@ export class HomeComponent {
   showDialogNewUser() {this.visibleNewUser=true;}
   showDialogLoginUser() {this.visibleLoginUser=true;}
 
-  
+  totalevent = 14
+  totaluser = 9
+  totalvendor = 10
 
   
   

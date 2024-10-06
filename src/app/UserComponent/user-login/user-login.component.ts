@@ -16,39 +16,71 @@ export class UserLoginComponent {
 
   phone_no: string | undefined;
   password: string | undefined;
+  errorMessage: string |undefined;
+  usererror : boolean = false ;
+  passworderror : boolean = false ;
+  loading: boolean = false ;
 
   constructor(private api: ApiserviceService , private router : Router , private dataService :DataService) { }
 
   cancel() {
-    throw new Error('Method not implemented.');
+    this.loading = !this.loading
   }
 
 
   submit() {
+    this.loading = true ;
     const data = {
       phone_no: this.phone_no,
       password: this.password
     };
   
-    this.api.loginUser(data).subscribe((res: any) => {
-      console.log(res.body.token)
-
-      if (res.body.token) {
-        
-        localStorage.setItem('token', res.body.token); 
-        console.log("hi")
-        const decodedToken = this.decodeToken(res.body.token);
-        const userdata = {
-          id: decodedToken._id
+    this.api.loginUser(data).subscribe({
+      next: (res: any) => {
+        // Handle successful response
+        console.log(res.body.token);
+    
+        if (res.body.token) {
+          localStorage.setItem('token', res.body.token);
+          console.log("hi");
+    
+          // Decode the token
+          const decodedToken = this.decodeToken(res.body.token);
+          const userdata = {
+            id: decodedToken._id
+          };
+          console.log(decodedToken.role);
+    
+          // Navigate based on the role
+          if (decodedToken.role === 'vendor') {
+            this.router.navigate(['/vendor']);
+          } else {
+            this.router.navigate(['/user']);
+          }
         }
-        console.log(decodedToken.role)
-        if (decodedToken.role === 'vendor') {
-          this.router.navigate(['/vendor']);
+      },
+      error: (err: any) => {
+        // Handle error scenario
+        console.error("Login failed", err);
+        this.usererror  = false 
+        this.passworderror  = false 
+        // You can add specific error handling logic here
+        if (err.status === 404) {
+          this.errorMessage = 'Username not found';
+          this.usererror = true
+        } else if (err.status === 401) {
+          this.errorMessage = 'Incorrect password';
+          this.passworderror = true
         } else {
-          this.router.navigate(['/user']);
+          this.errorMessage = 'An unknown error occurred. Please try again later.';
         }
+        console.log(this.errorMessage)
+        console.log(this.usererror)
       }
     });
+
+    this.loading = false ;
+    
   }
   
 

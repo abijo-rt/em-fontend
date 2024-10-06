@@ -1,0 +1,31 @@
+<div class="card">
+    <p-table [value]="paymentable" [tableStyle]="{'width': 'full-content'}">
+        <ng-template pTemplate="caption">
+            <div class="flex justify-between items-center">
+                payment transaction details
+                <button  class="bg-blue-400 text-white rounded-md p-1 pl-2 pr-2" type="button" (click)="fetchdata()" >Fetch details</button>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header" >
+            <tr>
+                <th>date</th>
+                <th>payment type</th>
+                <th>Price</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product >
+            <tr>
+                <td>{{product.date}}</td>
+               
+                <td>{{product.bill}}</td>
+                <td ><p class="bg-yellow-500 text-white font-semibold rounded-md w-fit h-fit pl-1 pr-1">{{product.mode_of_payment}}</p></td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{products ? products.length : 0 }} transactions.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
