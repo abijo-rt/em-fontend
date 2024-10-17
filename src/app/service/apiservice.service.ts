@@ -8,8 +8,8 @@ import { environment } from '../../../environment.prod';
   providedIn: 'root'
 })
 export class ApiserviceService {
-  private url = environment.URL
-//  private url = 'http://localhost:3000/';
+  // private url = environment.URL
+ private url = 'http://localhost:3000/';
 
   constructor(private https : HttpClient) { }
   
@@ -52,6 +52,10 @@ export class ApiserviceService {
   
   getEventVendorList(data : any):Observable<HttpResponse<any>>{
     return this.https.post<any>(`${this.url}user/getEventVendorList`, data ,{observe:'response'});
+  }
+
+  addreqtable(data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}vendor/addreqtable`, data ,{observe:'response'});
   }
 
   updatePhasedata (data : any):Observable<HttpResponse<any>>{

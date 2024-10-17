@@ -11,7 +11,7 @@
 }
 
 input{
-    width: 215px;
+    width: 250px;
 }
 
 .visible {
@@ -25,3 +25,9 @@ input{
   .p-inputtext{
     background-color: #beeaff;
   }
+
+  label {
+    width: 150px;
+    border: 2px;
+  }
+

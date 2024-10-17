@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ApiserviceService } from '../../service/apiservice.service';
+import { CommonModule } from '@angular/common';
 
 interface INewVendor {
   name: String,
@@ -10,18 +11,21 @@ interface INewVendor {
   pincode: String,
   c_name: String,
 }
+
 @Component({
   selector: 'app-new-vendor',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './new-vendor.component.html',
   styleUrl: './new-vendor.component.css'
 })
 export class NewVendorComponent {
 password: any;
 
+
   constructor(private api:ApiserviceService){}
 
+  service  = ["Food","Decor","Entertainment","Venue"]
   name: String | undefined;
   email: String | undefined;
   phone_no: String | undefined;
@@ -41,7 +45,13 @@ password: any;
       password: this.password,
     }
 
-    this.api.newVendor(newVenodor).subscribe((res) => console.log(res) )
+    this.api.newVendor(newVenodor).subscribe(
+      (res) =>
+        {
+           console.log(res)
+           window.location.reload();
+        } 
+      )
     console.log(newVenodor)
   }
 

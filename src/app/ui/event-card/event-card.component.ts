@@ -45,27 +45,28 @@ export class EventCardComponent implements OnChanges{
   receiveData(data: string) {
     console.log(data)
     console.log(this.venList)
-    if(data == "Venue")this.vendetails = this.venList[0]
-    if(data == "Food")this.vendetails = this.venList[1]
+    if(data == "Venue")this.vendetails = this.venList[3]
+    if(data == "Food")this.vendetails = this.venList[0]
     if(data == "Decor")this.vendetails = this.venList[2]
-    if(data == "Entertainment")this.vendetails = this.venList[3]
+    if(data == "Entertainment")this.vendetails = this.venList[1]
   }
   
   vendetails : any | undefined ;
 
   fetchVendorList(){
-  this.tempevent = this.event
-  console.log("temp data ==> " ,this.tempevent)
-  const list = {
-    list : this.event
-  }
-   this.api.getEventVendorList(list).subscribe((data) => {
+    
+    this.tempevent = this.event
+    console.log("temp data ==> " ,this.tempevent)
+    const list = {
+      list : this.event
+    }
+      this.api.getEventVendorList(list).subscribe((data) => {
 
-     this.venList=data.body
-     console.log("data",this.venList)
-     this.vendetails = this.venList[0]
-     
-   })
+        this.venList=data.body
+        console.log("data",this.venList)
+        this.vendetails = this.venList[0]
+        
+      })
 }
 
 

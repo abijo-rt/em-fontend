@@ -5,13 +5,20 @@
     <div class="w-1/2  space-y-6">
         <span class="p-text-secondary block mb-5">Enter your details</span>
         <div class="flex justify-between gap-3 mb-3">
+            <label class="font-semibold " >Select service</label>
+            <select id="items" class="w-[3/4] flex-auto inputbox"  [(ngModel)]="name">
+              <option *ngFor="let item of service" [value]="item">{{ item }}</option>
+            </select>
+          </div>
+        <!-- <div class="flex justify-between gap-3 mb-3">
             <label for="username" class="font-semibold ">Service</label>
             <input   id="username" class="flex-auto inputbox " autocomplete="off" [(ngModel)]="name" placeholder="( e.g Food or Decor )"/>
-        </div>
+        </div> -->
         <div class="flex justify-between gap-3 mb-5">
             <label for="email" class="font-semibold ">Email</label>
-          <div><input   id="email" class="flex-auto inputbox" autocomplete="off" [(ngModel)]="email"/></div>  
+            <input   id="email" class="flex-auto inputbox" autocomplete="off" [(ngModel)]="email"/>  
         </div>
+
         <div class="flex justify-between gap-3 mb-5">
             <label for="email" class="font-semibold ">Company Name</label>
             <input   id="email" class="flex-auto inputbox" autocomplete="off" [(ngModel)]="c_name"/>
@@ -22,7 +29,7 @@
         </div>
         <div class="flex justify-between gap-3 mb-5">
             <label for="email" class="font-semibold ">Pincode</label>
-          <div><input   id="email" class="flex-auto inputbox" autocomplete="off" [(ngModel)]="pincode"/></div>  
+            <input   id="email" class="flex-auto inputbox" autocomplete="off" [(ngModel)]="pincode"/> 
         </div>
         <div class="flex justify-between gap-3 mb-5">
             <label for="email" class="font-semibold ">Phone No</label>

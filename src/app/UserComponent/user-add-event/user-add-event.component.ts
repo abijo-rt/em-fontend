@@ -39,7 +39,10 @@ export class UserAddEventComponent {
       vendorList: this.receivedVendorNames // Assign the list of received vendor names
     };
     console.log('Form Submitted:', form);
-    this.api.newEvent(form).subscribe((data) => console.log(data))
+    this.api.newEvent(form).subscribe((data) => {
+      console.log(data)
+      window.location.reload()
+    })
   }
   
   receivedVendorNames: string[] = [];

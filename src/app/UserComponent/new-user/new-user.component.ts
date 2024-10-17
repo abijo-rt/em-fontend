@@ -27,7 +27,10 @@ export class NewUserComponent {
       phone_no: this.phone_no,
     };
 
-    this.api.newUser(data).subscribe((res) => console.log(res))
+    this.api.newUser(data).subscribe((res) => {
+      console.log(res)
+      window.location.reload();
+    })
 
     console.log(data);
   }
