@@ -17,6 +17,12 @@ export class NewEventsComponent {
   constructor(private dataservice: DataService, private api: ApiserviceService) { }
   userData: any | undefined;
 
+  ViewTab : string  = "all";
+
+  changeView(view : string){
+    this.ViewTab = view;
+  }
+
   eventlist : any
 
   ngOnInit() {

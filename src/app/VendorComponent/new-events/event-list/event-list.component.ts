@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class EventListComponent {
   @Input() event: any
+  @Input() user: any
   
   visibleEventDetails: any;
 

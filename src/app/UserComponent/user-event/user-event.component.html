@@ -1,14 +1,14 @@
-<div class="w-full h-full flex flex-col ">
+<div class="w-full  flex flex-col  ">
     <div class="w-full  h-16 rounded-t-md  border-b-2  flex items-center justify-start space-x-8 pl-16">
         <div class="userdata"><img src="../../../assets/userprofile.svg" class="pr-2 size-7" srcset=""> : {{userData.name}}</div>
         <div class="userdata"><img src="../../../assets/phoneicon.svg" class="pr-2 size-7" srcset=""> : {{userData.phone}}</div>
         <div class="userdata"><img src="../../../assets/emailicon.svg" class="pr-2 size-7" srcset=""> : {{userData.email}}</div>
     </div>
    
-    <div class="grid grid-cols-4 w-full  overflow-auto flex-grow pl-8 pr-8">
+    <div class="grid grid-cols-4 w-full h-fit overflow-auto  pb-10">
         <div *ngFor="let events of eventList" class="pl-8 pt-10">
             <app-event-list  [event] = "events" ></app-event-list>
         </div>
-        
+        <div class="w-full h-6"></div>
     </div>
 </div>

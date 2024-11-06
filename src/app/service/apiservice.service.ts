@@ -8,8 +8,8 @@ import { environment } from '../../../environment.prod';
   providedIn: 'root'
 })
 export class ApiserviceService {
-  // private url = environment.URL
- private url = 'http://localhost:3000/';
+  //private url = environment.URL
+  private url = 'http://localhost:3000/';
 
   constructor(private https : HttpClient) { }
   
@@ -71,8 +71,24 @@ export class ApiserviceService {
   }
 
   updatepaymentbill (data : any):Observable<HttpResponse<any>>{
-    return this.https.post<any>(`${this.url}vendor/updatepaymentbill`, data ,{observe:'response'});
+    return this.https.post<any>(`${this.url}user/updatepaymentbill`, data ,{observe:'response'});
   }
+
+  giverequirementquatation (data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}vendor/giverequirementquatation`, data ,{observe:'response'});
+  }
+
+  update_payment_transaction (data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}vendor/update_payment_transaction`, data ,{observe:'response'});
+  }
+
+  finaliseQuatation (data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}user/finaliseQuatation`, data ,{observe:'response'});
+  }
+  getFinalVendorDetails (data : any):Observable<HttpResponse<any>>{
+    return this.https.post<any>(`${this.url}user/getFinalVendorDetails`, data ,{observe:'response'});
+  }
+
 
   downloadfile(filename: string): Observable<Blob> {
     console.log(filename)

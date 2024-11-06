@@ -16,6 +16,8 @@ export class ListEventComponent {
   status: any;
   
   vendetails() {
+    //  alert(this.vendorName)
+    
   this.sendData()
   }
 

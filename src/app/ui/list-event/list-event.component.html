@@ -2,7 +2,7 @@
     <button class="venbtn" (click)="vendetails()">{{vendorName}}</button>
    
     
-    <div *ngFor="let status of vendorDetails.vendorEventDetails[0].status" class="list">
+    <div *ngFor="let status of vendorDetails.vendorEventDetails.status" class="list">
         <img
         [src]=" status ? '../../../assets/complete.svg' : '../../../assets/pending.svg'"
         alt=""

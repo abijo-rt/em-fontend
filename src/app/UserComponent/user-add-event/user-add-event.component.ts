@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { StepperFormComponent } from "../../ui/stepper-form/stepper-form.component";
 import { FormsModule } from '@angular/forms';
 import { ApiserviceService } from '../../service/apiservice.service';
 import { AppdataService } from '../../service/appdata.service';
 import { DataService } from '../../service/data.service';
+import { DialogModule } from 'primeng/dialog';
+import { RequirementComponent } from "./requirement/requirement.component";
+import { ThisReceiver } from '@angular/compiler';
 interface INewEvent {
   user : string,
   name: string,
@@ -12,18 +15,24 @@ interface INewEvent {
   doe: string,
   lOfEvent: string,
   vendorList: string[]
-
+  requirement : any
 }
 @Component({
   selector: 'app-user-add-event',
   standalone: true,
-  imports: [StepperFormComponent, FormsModule],
+  imports: [StepperFormComponent, FormsModule, DialogModule, RequirementComponent],
   templateUrl: './user-add-event.component.html',
   styleUrl: './user-add-event.component.css'
 })
 export class UserAddEventComponent {
 
-  
+  requiement : any;
+
+  receiveMessage(message: any) {
+    this.requiement = message 
+    console.log(this.requiement)
+  }
+
   constructor(private api : ApiserviceService , private dataservice : DataService){}
 
   onSubmit() {
@@ -36,12 +45,13 @@ export class UserAddEventComponent {
       eventType: this.eventType || '',  // Default to empty string if undefined
       doe: this.doe || '',           // Default to empty string if undefined
       lOfEvent: this.lOfEvent || '', // Default to empty string if undefined
-      vendorList: this.receivedVendorNames // Assign the list of received vendor names
+      vendorList: this.receivedVendorNames,
+      requirement : this.requiement
     };
     console.log('Form Submitted:', form);
     this.api.newEvent(form).subscribe((data) => {
       console.log(data)
-      window.location.reload()
+      // window.location.reload()
     })
   }
   
@@ -52,7 +62,7 @@ export class UserAddEventComponent {
   doe: string | undefined
   lOfEvent: string | undefined
   pincode: string | undefined
-  
+  dialog : boolean = false;
   
   onVendorNamesReceived(vendorNames: string) {
     this.receivedVendorNames.push(vendorNames);
@@ -70,6 +80,18 @@ export class UserAddEventComponent {
       this.dataservice.callFunction();
   })
   }
+
+
+  requirement(){
+    this.dialog = true;
+  }
+
+
+
+
+
+
+
 
 
 }
