@@ -8,8 +8,8 @@ import { environment } from '../../../environment.prod';
   providedIn: 'root'
 })
 export class ApiserviceService {
-  //private url = environment.URL
-  private url = 'http://localhost:3000/';
+  private url = environment.URL
+  // private url = 'http://localhost:3000/';
 
   constructor(private https : HttpClient) { }
   

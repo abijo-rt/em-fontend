@@ -17,6 +17,7 @@ export class UserEventComponent {
 
   userData : any | undefined ;
   eventList : any | undefined ;
+  noEventLogo : boolean = false;
 
   tezt(){
     console.log(this.eventList);
@@ -43,6 +44,9 @@ export class UserEventComponent {
       console.log('Event list received')
       this.eventList = data.body.events;
       console.log(this.eventList)
+      if(this.eventList==0){
+        this.noEventLogo = true
+      }
     })
 
   

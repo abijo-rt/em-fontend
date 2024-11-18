@@ -51,7 +51,7 @@ export class UserAddEventComponent {
     console.log('Form Submitted:', form);
     this.api.newEvent(form).subscribe((data) => {
       console.log(data)
-      // window.location.reload()
+      window.location.reload()
     })
   }
   

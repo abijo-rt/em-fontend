@@ -21,6 +21,7 @@ export const routes: Routes = [
     canActivate: [RoleGuard],
     data: { expectedRole: 'user' } ,
     children: [
+      { path: '', redirectTo: 'events', pathMatch: 'full' },
       { path: 'events', component: UserEventComponent },
       { path: 'addevents', component: UserAddEventComponent },
     ]
@@ -30,6 +31,7 @@ export const routes: Routes = [
     canActivate: [RoleGuard],
     data: { expectedRole: 'vendor' } ,
     children: [
+      { path: '', redirectTo: 'newevents', pathMatch: 'full' },
       { path: 'newevents', component: NewEventsComponent },
       { path: 'events', component: PastEventsComponent },
     ]
